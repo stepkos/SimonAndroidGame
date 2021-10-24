@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Button> buttonHandlers;
     ArrayList<Integer> orderIndexes = new ArrayList<Integer>();
     Random random = new Random();
-
+    TextView topText;
+    View background;
     public int iterator;
 
     @Override
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.button3),
                 findViewById(R.id.button4)
         ));
+
+        topText = findViewById(R.id.topText);
+        background = findViewById(R.id.background);
 
         setDefaultButtonColors();
         setEventListeners();
@@ -59,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void start(View view) {
 
-        orderIndexes.clear();
+        topText.setText("");
+        background.setBackgroundColor(Color.WHITE);
+        orderIndexes.clear(); // to be sure it is clear
+
+        // generate random indexes of handlers to memorise
         for (int i=0; i<4; i++)
             orderIndexes.add(random.nextInt(4));
 
@@ -88,11 +97,15 @@ public class MainActivity extends AppCompatActivity {
     public void won() {
         Toast.makeText(this, "Won!", Toast.LENGTH_SHORT).show();
         orderIndexes.clear();
+        topText.setText("You're won! Click start to play again");
+        background.setBackgroundColor(Color.GREEN);
     }
 
     public void lose() {
         Toast.makeText(this, "Lose!", Toast.LENGTH_SHORT).show();
         orderIndexes.clear();
+        topText.setText("You're lose! Click start to play again");
+        background.setBackgroundColor(Color.RED);
     }
     
 }
