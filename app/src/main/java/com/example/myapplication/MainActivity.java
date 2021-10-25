@@ -19,7 +19,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Button> buttonHandlers;
-    ArrayList<Integer> orderIndexes = new ArrayList<Integer>();
+    ArrayList<Integer> orderIndexes = new ArrayList<>();
     Random random = new Random();
     TextView topText;
     View background;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Set up handlers for buttons
-        buttonHandlers = new ArrayList<Button>(Arrays.asList(
+        buttonHandlers = new ArrayList<>(Arrays.asList(
                 findViewById(R.id.button1),
                 findViewById(R.id.button2),
                 findViewById(R.id.button3),
